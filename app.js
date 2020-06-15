@@ -14,7 +14,7 @@ var routesKhachHang = require('./routesAdmin/khachhangRoutes');
 var routesChiTietVeXe = require('./routesAdmin/chitietvexeRoutes');
 var routesChiTietVeXeHuy = require('./routesAdmin/chitietvexehuyRoute');
 var routesHoaDon = require('./routesAdmin/hoadonRoutes');
-var routesTaiKhoan = require('./routesAdmin/taikhoanRoutes');
+//var routesTaiKhoan = require('./routesAdmin/taikhoanRoutes');
 var routeUsers = require('./routesAdmin/userRoutes')
 const { ensureAuthenticated, forwardAuthenticated ,ensureAuthenticatedForAdmin} = require('./config/auth');
 
@@ -85,51 +85,51 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 
 
 //Route Admin
-app.get("/allusers",function(req,res){
+app.get("/allusers",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/user");
 });
-app.get("/tablebenxe",function(req,res){
+app.get("/tablebenxe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/tableBenXe");
 });
-app.get("/tablexe",function(req,res){
+app.get("/tablexe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/tableXe");
 });
-app.get("/tabletuyenxe",function(req,res){
+app.get("/tabletuyenxe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/tableTuyenXe");
 });
-app.get("/tablechuyenxe",function(req,res){
+app.get("/tablechuyenxe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/tableChuyenXe");
 });
-app.get("/tablekhachhang",function(req,res){
+app.get("/tablekhachhang",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/tableKhachHang");
 });
-app.get("/tablevexe",function(req,res){
+app.get("/tablevexe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/tableVeXe");
 });
-app.get("/tablehoadon",function(req,res){
+app.get("/tablehoadon",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/tableHoaDon");
 });
-app.get("/editbenxe",function(req,res){
+app.get("/editbenxe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/editBenXe");
 });
-app.get("/editxe",function(req,res){
+app.get("/editxe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/editXe");
 });
-app.get("/edittuyenxe",function(req,res){
+app.get("/edittuyenxe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/editTuyenXe");
 });
-app.get("/editchuyenxe",function(req,res){
+app.get("/editchuyenxe",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/editChuyenXe");
 });
-app.get("/editkhachhang",function(req,res){
+app.get("/editkhachhang",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/editKhachHang");
 });
-app.get("/statistical",function(req,res){
+app.get("/statistical",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/statistical");
 });
-app.get("/huyve",function(req,res){
+app.get("/huyve",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/huyVeXe")
-});app.get("/duyetvehuy",function(req,res){
+});app.get("/duyetvehuy",ensureAuthenticatedForAdmin,function(req,res){
   res.render("admin/DuyetVeHuy")
 });
 
@@ -143,7 +143,7 @@ routesKhachHang(app);
 routesChiTietVeXe(app);
  routesChiTietVeXeHuy(app);
 routesHoaDon(app);
-routesTaiKhoan(app);
+//routesTaiKhoan(app);
 routeUsers(app);
 app.use(function (req, res, next) {
   res.status(404).render('error');

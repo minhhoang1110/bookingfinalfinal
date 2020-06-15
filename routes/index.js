@@ -121,6 +121,7 @@ router.get('/getID/:src/:des',(req, res)=>{
 
 router.get('/booking/ticket/:ticketId', (req,res) =>{
   //console.log("checking info ticket")
+  console.log(req.params.ticketId)
   UserMysql.checkTicket(req.params.ticketId,(result)=>{
     if(result) return res.status(200).json(result)
     console.log("err")

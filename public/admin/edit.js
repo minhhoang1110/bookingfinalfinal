@@ -5,6 +5,8 @@ $(document).ready(function(){
 	var dsMaTX=[];
 	var dsMaCX=[];
 	var dsEmail=[];
+
+	
 	
 	$('#MaTX-ChuyenXe').click(function(){
 		$(".optagBX").remove();
@@ -45,6 +47,7 @@ $(document).ready(function(){
 	}
 	
 	async function getDiemDi(){
+		console.log("ksks")
 		const response=await fetch(`http://localhost:5000/diemdi/${$('#MaTX-ChuyenXe').val()}`);
 		const data= await response.json();
 		for(var i=0;i < data.length;i++){
@@ -221,8 +224,16 @@ $(document).ready(function(){
 		}
 		return true;
 	}
-	
-	
+	/*
+	function checkChuyenXe(){
+		const response= await fetch('http://localhost:5000/chuyenxe');
+		const data= await response.json();
+		for(var i=0;i<data.length;i++){
+			if($('#BienSoXe-ChuyenXe').val()==data[i].BienSoXe && String($('#NgayDi').val())==data[i].NgayDi && String($('#GioDi').val())==data[i].GioDi)return 0;
+		}
+		return 1;
+	}
+	*/
 	
 	//them xoa sua ben xe
 	$('#buttonInsertBenXe').click(function(){
@@ -383,6 +394,7 @@ $(document).ready(function(){
 		}
 		else{
 			if(checkMaTX()==false) alert('MaTX không được trùng');
+			if($('#DiemDi').val()==$('#DiemDen').val())alert('DiemDi va DiemDen khong duoc trung');
 			else{
 				fetch('http://localhost:5000/tuyenxe',{
 					method: 'POST',
@@ -411,6 +423,7 @@ $(document).ready(function(){
 		}
 		else{
 			if(checkMaTX()==true) alert('MaTX không tồn tại');
+			if($('#DiemDi').val()==$('#DiemDen').val())alert('DiemDi va DiemDen khong duoc trung');
 			else{
 				fetch(`http://localhost:5000/tuyenxe/${$('#MaTX').val()}`,{
 					method: 'PUT',
@@ -461,6 +474,7 @@ $(document).ready(function(){
 		}
 		else{
 			if(checkMaCX()==false) alert('MaCX không được trùng');
+			//if(checkChuyenXe()==0) alert('Chuyen Xe khong the them');
 			else{
 				fetch('http://localhost:5000/chuyenxe',{
 					method: 'POST',
@@ -493,6 +507,7 @@ $(document).ready(function(){
 		}
 		else{
 			if(checkMaCX()==true) alert('MaCX không tồn tại');
+			//if(checkChuyenXe()==0) alert('Chuyen Xe khong the them');
 			else{
 				fetch(`http://localhost:5000/chuyenxe/${$('#MaCX').val()}`,{
 					method: 'PUT',

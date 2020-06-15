@@ -137,7 +137,7 @@ $(document).ready(function(){
 
   checkTicket.addEventListener('click', async ()=>{
      console.log(searchticketID.value)
-    const response =  await fetch(`http://192.168.1.4:5000/booking/ticket/${searchticketID.value}`)
+    const response =  await fetch(`http://localhost:5000/booking/ticket/${searchticketID.value}`)
     const ticket = await response.json();
     console.log(ticket)
     if(ticket.length > 0){

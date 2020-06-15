@@ -26,13 +26,14 @@ module.exports = function(app) {
   	HuyVe.findTicketById(req.params.id,(result)=>{
   		if(result.length > 0){
   			let Email = result[0].Email;
-  			let MaCX = result[0].MaCX;
+			  let MaCX = result[0].MaCX;
+			  console.log(result[0])
   			const ticketCancle = new Ticket({MaVeXe,Email,STK,DonGia,NgayHuy,TinhTrang});
   			ticketCancle.save().then(user =>{
 			    if(user){
 			      HuyVe.destroyTicket(MaVeXe,async (result)=>{
 			        if(result){
-			          HuyVe.updateTickets(-1,MaCX,(result)=>{
+			          HuyVe.updateTickets(-1,MaCX,(result)=>{s
 			            if(result){
 			             // Cancle.sendMailForCancle(res,req,MaVeXe);
 			              return res.status(200).send({err:0})

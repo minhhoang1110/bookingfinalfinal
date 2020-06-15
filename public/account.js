@@ -72,7 +72,7 @@ $(document).ready(function(){
           <td>${ticket.SoGhe}</td>
           <td>${new Date(ticket.NgayDi).toLocaleDateString()}</td>`
         //  dateGo = ticket.NgayDi.slice(0,10) + ticket
-          if((new Date(today).getTime() - new Date(`${ticket.NgayDi}`).getTime() + 86400000) <= 0)
+          if((new Date(today).getTime() - new Date(`${ticket.NgayDi}`).getTime() + 86400000) < 0)
               myTickets += `<td><button onclick="showModal(event)" data-post=${ticket.MaCX} id=${ticket.MaVeXe}>Hủy vé</button></td></tr>`
           else myTickets +=`</tr>`
 
